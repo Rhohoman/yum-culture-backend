@@ -71,19 +71,19 @@ all_food_items.each{ |meal|
 sorted_meals = []
 all_meals_unformatted.each{ |meal_object| meal_object['meals'].each{ |meal| sorted_meals << meal } }
 
-# all_food_items.each{ |meal|
-#     meal_id = meal['idMeal']
-#     print "id: #{meal_id}, "
-# }
+sorted_meals.each{ |meal| 
+    Food.create(
+        name: meal['strMeal'],
+        image: meal['strMealThumb'],
+        categories: "#{meal['strCategory']},#{meal['strTags']}",
+        rating: 0,
+        api_id: meal['idMeal'],
+        youtube_url: meal["strYoutube"],
+        area: meal['strArea'],
+        instructions: meal['strIntructions']
+    )
+}
 
-# Food.create(
-#         name: meal['strMeal'],
-#         image: meal['strMealThumb'],
-#         description: "",
-#         calories: null,
-#         categories: null,
-#         api_id: meal['idMeal']
-#     )
-binding.pry
+# binding.pry
 
 # RestClient.get('https://www.themealdb.com/api/json/v1/1/filter.php?c=Seafood')
