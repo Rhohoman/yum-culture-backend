@@ -1,11 +1,15 @@
 class FoodsController < ApplicationController
 
-    def create
-
-    end 
-
+    skip_before_action :authorized
+    
     def index
-        foods = Food.all
-        render json: foods
+        @foods = Food.all
+        render json: @foods
     end
+
+    def show
+        @food = Food.find(params[:id])
+        render json: @food
+    end
+
 end

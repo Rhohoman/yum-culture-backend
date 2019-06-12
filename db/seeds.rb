@@ -80,10 +80,10 @@ sorted_meals.each{ |meal|
         api_id: meal['idMeal'],
         youtube_url: meal["strYoutube"],
         area: meal['strArea'],
-        instructions: meal['strIntructions']
+        instructions: meal['strInstructions']
     )
 }
 
-# binding.pry
+binding.pry
 
 # RestClient.get('https://www.themealdb.com/api/json/v1/1/filter.php?c=Seafood')
