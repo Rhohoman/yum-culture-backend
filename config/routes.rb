@@ -11,4 +11,6 @@ Rails.application.routes.draw do
   get '/profile', to: 'users#profile'
   # get '/users/:id', to 'users#show'
   post '/login', to: 'auth#login'
+
+  get '/largest_hash_key', to: 'favorites#largest_hash_key'
 end
