@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
     
-    skip_before_action :authorized, only: [:create]
+    skip_before_action :authorized, only: [:create, :index]
     
     def profile
         render json: { user: UserSerializer.new(session_user) }, status: :accepted
@@ -23,6 +23,11 @@ class UsersController < ApplicationController
     def show
         @user = User.find(params[:id])
         render json: @user
+    end
+
+    def index
+        @users = User.all
+        render json: @users
     end
 
     def update_username
