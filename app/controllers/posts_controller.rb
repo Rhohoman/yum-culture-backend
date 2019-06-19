@@ -3,6 +3,7 @@ class PostsController < ApplicationController
     skip_before_action :authorized, only: [:create, :index, :show]
 
     def create
+        # binding.pry
         @post = Post.create(post_params)
         render json: @post
     end
@@ -20,7 +21,7 @@ class PostsController < ApplicationController
     private
 
     def post_params
-        params.permit(:user_id, :food_id, :username, :image_url, :text, :likes, :dislikes)
+        params.permit(:user_id, :food_id, :username, :image_url, :profile_image_url, :text, :likes, :dislikes)
     end
 
 end

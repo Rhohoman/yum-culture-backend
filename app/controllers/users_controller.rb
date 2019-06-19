@@ -8,7 +8,7 @@ class UsersController < ApplicationController
 
     def create
         # creating stuff
-        # byebug
+        # binding.pry
         @user = User.create(user_params)
 
         if @user.valid?
@@ -48,7 +48,7 @@ class UsersController < ApplicationController
     private
 
     def user_params
-        params.permit(:name, :location, :username, :password)
+        params.permit(:name, :location, :username, :password, :user_picture)
     end
 
     def username_params
