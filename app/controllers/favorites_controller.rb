@@ -1,6 +1,6 @@
 class FavoritesController < ApplicationController
 
-    skip_before_action :authorized, only: [:create, :show, :index, :largest_hash_key]
+    skip_before_action :authorized, only: [:create, :show, :index, :largest_hash_key, :destroy]
 
     def create
         # binding.pry
@@ -16,6 +16,13 @@ class FavoritesController < ApplicationController
     def index
         @favorites = Favorite.all
         render json: @favorites
+    end
+
+    def destroy
+        @favorite = Favorite.find(params[:id])
+        # binding.pry
+        @favorite.destroy
+        render json: @favorite
     end
 
     def largest_hash_key

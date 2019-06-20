@@ -14,4 +14,7 @@ Rails.application.routes.draw do
   post '/login', to: 'auth#login'
 
   get '/largest_hash_key', to: 'favorites#largest_hash_key'
+
+  post '/posts/:id', to: 'posts#update'
+  post '/users/:id', to: 'users#update'
 end

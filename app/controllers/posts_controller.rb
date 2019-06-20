@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
 
-    skip_before_action :authorized, only: [:create, :index, :show]
+    skip_before_action :authorized, only: [:create, :index, :show, :update]
 
     def create
         # binding.pry
@@ -18,10 +18,21 @@ class PostsController < ApplicationController
         render json: @post
     end
 
+    def update
+        # binding.pry
+        @post = Post.find(params[:id])
+        @post.update(post_update_params)
+        render json: @users
+    end
+
     private
 
     def post_params
-        params.permit(:user_id, :food_id, :username, :image_url, :profile_image_url, :text, :likes, :dislikes)
+        params.permit(:user_id, :food_id, :foodName, :username, :image_url, :profile_image_url, :text, :likes, :dislikes)
+    end
+
+    def post_update_params
+        params.require(:post).permit(:likes)
     end
 
 end

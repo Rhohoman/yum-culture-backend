@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
     
-    skip_before_action :authorized, only: [:create, :index]
+    skip_before_action :authorized, only: [:create, :index, :update]
     
     def profile
         render json: { user: UserSerializer.new(session_user) }, status: :accepted
@@ -30,20 +30,21 @@ class UsersController < ApplicationController
         render json: @users
     end
 
-    def update_username
+    def update
         # update stuff
+        binding.pry
         @user = User.find(params[:id])
-        @user.update(username_params)
+        @user.update(user_params)
 
         render json: @user
     end
 
-    def update_location
-        @user = User.find(params[:id])
-        @user.update(location_params)
+    # def update_location
+    #     @user = User.find(params[:id])
+    #     @user.update(location_params)
 
-        render json: @user
-    end
+    #     render json: @user
+    # end
 
     private
 
@@ -51,11 +52,11 @@ class UsersController < ApplicationController
         params.permit(:name, :location, :username, :password, :user_picture)
     end
 
-    def username_params
-        params.require(:user).permit(:username)
-    end
+    # def username_params
+    #     params.require(:user).permit(:username)
+    # end
 
-    def location_params
-        params.require(:user).permit(:location)
-    end
+    # def location_params
+    #     params.require(:user).permit(:location)
+    # end
 end
