@@ -32,9 +32,9 @@ class UsersController < ApplicationController
 
     def update
         # update stuff
-        binding.pry
+        # binding.pry
         @user = User.find(params[:id])
-        @user.update(user_params)
+        @user.update(update_params)
 
         render json: @user
     end
@@ -50,6 +50,10 @@ class UsersController < ApplicationController
 
     def user_params
         params.permit(:name, :location, :username, :password, :user_picture)
+    end
+
+    def update_params
+        params.require(:user).permit(:name, :username, :location)
     end
 
     # def username_params

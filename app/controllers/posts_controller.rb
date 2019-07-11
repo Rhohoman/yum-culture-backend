@@ -5,6 +5,7 @@ class PostsController < ApplicationController
     def create
         # binding.pry
         @post = Post.create(post_params)
+        
         render json: @post
     end
 
@@ -22,7 +23,7 @@ class PostsController < ApplicationController
         # binding.pry
         @post = Post.find(params[:id])
         @post.update(post_update_params)
-        render json: @users
+        render json: @post
     end
 
     private
@@ -32,7 +33,7 @@ class PostsController < ApplicationController
     end
 
     def post_update_params
-        params.require(:post).permit(:likes)
+        params.require(:post).permit(:likes, :dislikes)
     end
 
 end
