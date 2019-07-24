@@ -1,4 +1,4 @@
-# Yum Culture (Back-end)
+# Yum Culture
 
 Yum Culture is an web application that allows users to browse through a selection of meals can be added into an individuals preferences.
 
